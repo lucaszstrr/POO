@@ -2,6 +2,7 @@
 
     class Pessoa {
 
+        public $diferenca;
         public String $nome;
         public int $idade;
         public int $diaNascimento;
@@ -18,11 +19,11 @@
         public function getNome(){
             return $this->nome;
         }
-
+/*
         public function getIdade(){
             return $this->idade;
         }
-
+*/
         public function getDiaNascimento(){
             return $this->diaNascimento;
             
@@ -36,8 +37,40 @@
         }
 
         public function calculaIdade(){
-            $this->idade = 2025 - $this->anoNascimento;
-            return $this->idade;
+
+            global $diferenca;
+            global $idade;
+
+            $data = date('d-m-Y');
+
+            $anoAtual = date('Y');
+            $mesAtual = date('m');
+            $diaAtual = date('d');
+
+            if($Fulano->getAnoNascimento() < $anoAtual){
+
+                $diferenca = $anoAtual - $Fulano->getAnoNascimento();
+                return $diferenca;
+
+            }
+
+            if($Fulano->getMesNascimento() < $mesAtual){
+
+                $mesProvavel = $diferenca - 1;
+                return $mesProvavel;
+                  
+            }elseif($Fulano->getMesNascimento() == $mesAtual && $Fulano->getDiaNascimento() < $diaAtual){
+
+                $idade = $diferenca - 1;
+                return $idade;
+
+            }else{
+
+                $idade = $diferenca;
+                return $idade;
+
+            }
+ 
         }
 
     }
@@ -46,10 +79,8 @@
     $Fulano = new Pessoa('Fulano', 1, 1, 1990);
 
     echo "O nome é " . $Fulano->getNome() .PHP_EOL;
-    echo "A idade é " . $Fulano->calculaIdade() .PHP_EOL;
-    echo "O dia de nascimento é " . $Fulano->getDiaNascimento() .PHP_EOL;
-    echo "O mês de nascimento é " . $Fulano->getMesNascimento() .PHP_EOL;
-    echo "O ano de nascimento é " . $Fulano->getAnoNascimento() .PHP_EOL;
+    echo "A data de nascimento é " . $Fulano->getDiaNascimento() . "/" . $Fulano->getMesNascimento() . "/" . $Fulano->getAnoNascimento() . PHP_EOL;
+    echo "A idade é $idade"  . PHP_EOL;
 
 
    
