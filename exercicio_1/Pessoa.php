@@ -2,7 +2,6 @@
 
     class Pessoa {
 
-        public $diferenca;
         public String $nome;
         public int $idade;
         public int $diaNascimento;
@@ -16,18 +15,18 @@
             $this->anoNascimento = $anoNascimento;
         }
 
-        public function getNome(){
+        public function getInformaNome(){
             return $this->nome;
         }
-/*
-        public function getIdade(){
+
+        public function getInformaIdade(){
             return $this->idade;
         }
-*/
+
         public function getDiaNascimento(){
-            return $this->diaNascimento;
-            
+            return $this->diaNascimento;      
         }
+
         public function getMesNascimento(){
             return $this->mesNascimento;
         }
@@ -38,8 +37,12 @@
 
         public function calculaIdade(){
 
+            global $pessoa1;
             global $diferenca;
-            global $idade;
+            global $data;
+            global $mesAtual;
+            global $diaAtual;
+            global $anoAtual;
 
             $data = date('d-m-Y');
 
@@ -47,40 +50,47 @@
             $mesAtual = date('m');
             $diaAtual = date('d');
 
-            if($Fulano->getAnoNascimento() < $anoAtual){
+            $diferenca = $anoAtual - $pessoa1->getAnoNascimento();
+            
+        }
 
-                $diferenca = $anoAtual - $Fulano->getAnoNascimento();
-                return $diferenca;
+        public function ajustaDataDeNascimento(){
 
-            }
+            global $pessoa1;
+            global $diferenca;
+            global $idade;
+            global $mesAtual;
+            global $diaAtual;
 
-            if($Fulano->getMesNascimento() < $mesAtual){
+            if($pessoa1->getMesNascimento() < $mesAtual){
 
-                $mesProvavel = $diferenca - 1;
-                return $mesProvavel;
+                $idade = $diferenca - 1;
+                return $idade;
                   
-            }elseif($Fulano->getMesNascimento() == $mesAtual && $Fulano->getDiaNascimento() < $diaAtual){
+            }elseif($pessoa1->getMesNascimento() == $mesAtual && $pessoa1->getDiaNascimento() < $diaAtual){
 
                 $idade = $diferenca - 1;
                 return $idade;
 
-            }else{
+            }elseif($pessoa1->getMesNascimento() >= $mesAtual && $pessoa1->getDiaNascimento() >= $diaAtual){
 
                 $idade = $diferenca;
-                return $idade;
 
             }
- 
+
         }
 
     }
 
+
+    $pessoa1 = new Pessoa('Lucas', 20, 11, 2007);
+
+    $idade = $pessoa1->ajustaDataDeNascimento($idade);
+  
+    echo "O nome é " . $pessoa1->getInformaNome() .PHP_EOL;
+    echo "A data de nascimento é " . $pessoa1->getDiaNascimento() . "/" . $pessoa1->getMesNascimento() . "/" . $pessoa1->getAnoNascimento() . PHP_EOL;
+    echo "A idade é $idade" .PHP_EOL;
+
     
-    $Fulano = new Pessoa('Fulano', 1, 1, 1990);
-
-    echo "O nome é " . $Fulano->getNome() .PHP_EOL;
-    echo "A data de nascimento é " . $Fulano->getDiaNascimento() . "/" . $Fulano->getMesNascimento() . "/" . $Fulano->getAnoNascimento() . PHP_EOL;
-    echo "A idade é $idade"  . PHP_EOL;
-
 
    
