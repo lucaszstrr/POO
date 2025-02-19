@@ -21,12 +21,11 @@
             $mesAtual = date('m');
             $diaAtual = date('d');
 
-            $idade = $anoAtual - $this->getAnoNascimento();
+            $idade = $anoAtual - $this->anoNascimento;
 
-            if($mesAtual < $this->getMesNascimento() || ($diaAtual < $this->getDiaNascimento() && $mesAtual < $this->getMesNascimento())){
+            if($mesAtual < $this->mesNascimento || ($diaAtual < $this->diaNascimento && $mesAtual < $this->mesNascimento)){
 
                 $idade--;
-                return $this->idade = $idade;
                   
             }
 
@@ -58,6 +57,8 @@
 
 
     $pessoa1 = new Pessoa('Lucas', 20, 11, 2007);
+
+    $pessoa1->calculaIdade();
   
     echo "O nome é " . $pessoa1->getInformaNome() .PHP_EOL;
     echo "A data de nascimento é " . $pessoa1->getDiaNascimento() . "/" . $pessoa1->getMesNascimento() . "/" . $pessoa1->getAnoNascimento() . PHP_EOL;
