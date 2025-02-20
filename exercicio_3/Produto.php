@@ -3,20 +3,13 @@
     class Produto{
 
         public $produto;
-        public $quantidade;
         public $preco;
         public $estoque;
-        public $pagamento;
-        public $total;
-        public $valorTotal;
-        public $totalEstoque;
 
-        public function __construct(String $produto, $quantidade, $preco, $estoque, String $pagamento){
+        public function __construct(String $produto, $preco, $estoque){
             $this->produto = $produto;
-            $this->quantidade = $quantidade;
             $this->preco = $preco;
             $this->estoque = $estoque;
-            $this->pagamento = $pagamento;
         }
 
 
@@ -27,32 +20,20 @@
 
         }
 
-        function calculoEstoque(){
+        public function calculoEstoque($quantidade){
 
-            if($this->estoque > $this->quantidade){
+            if($this->estoque >= $quantidade){
 
-                $totalEstoque = $this->estoque - $this->quantidade;
-                return $this->totalEstoque = $totalEstoque;
+                $this->estoque -= $quantidade;
+                return true;
 
             }else{
 
-                echo "Não foi possível fazer a compra, qtd superior ao estoque" .PHP_EOL;
+                return false;
 
             }
             
 
         }
-
-        function getCalculoPreco(){
-
-            return $this->valorTotal;
-
-        }
-
-        function getCalculoEstoque(){
-
-            return $this->totalEstoque;
-
-        }
-
+        
     }

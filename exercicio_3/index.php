@@ -1,11 +1,26 @@
 <?php
 
     require_once "Produto.php";
+    require_once "ItemPedido.php";
+    require_once "Pedido.php";
 
-    $produto1 = new Produto('maçã', 4, 2, 10, 'dinheiro');
+    $produto1 = new Produto("maçã", 2, 100);
+    $produto2 = new Produto("morango", 3, 100);
+    $produto3 = new Produto("banana", 5, 100);
 
-    echo "Foram vendidas " . $produto1->quantidade . " unidades de " . $produto1->produto . PHP_EOL;
-    echo "Valor da compra: R$" . $produto1->CalculoPreco() . PHP_EOL;
-    echo "Agora o estoque é de ". $produto1->CalculoEstoque() . PHP_EOL;
-    echo "O meio de pagamento utilizado foi " . $produto1->pagamento . PHP_EOL;
-    
+
+    $item1 = new ItemPedido($produto1, 40);
+    $item2 = new ItemPedido($produto2, 20);
+    $item3 = new ItemPedido($produto3, 10);
+
+
+    $pedido = new Pedido();
+    $pedido->adicionarItem($item1);
+    $pedido->adicionarItem($item2);
+    $pedido->adicionarItem($item3);
+
+    $pedido->setPagamento("dinheiro");
+
+    $pedido->finalizarPedido();
+
+
