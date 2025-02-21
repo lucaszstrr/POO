@@ -37,7 +37,6 @@
         public $quantidadeDeColaboradores;
         public $salario;
 
-        #[\Override]
         public function calculaSalario(){
 
             if($this->cargo === 'gerente'){
@@ -50,6 +49,6 @@
 
     }
 
-    $funcionario = new Funcionario(222, 'Funcionario', 'auxiliar');
+    $funcionario = new Funcionario(222, 'Funcionario', 'gerente');
     $funcionario->calculaSalario();
     echo "O salario do funcionário ". $funcionario->nome ." é de R$". $funcionario->salario . PHP_EOL;
