@@ -7,20 +7,20 @@
         public $cargo;
         public $salario;
 
+
         function __construct($id, $nome, $cargo){
             $this->id = $id;
             $this->nome = $nome;
             $this->cargo = $cargo;
+            $this->calculaSalario();
         }
 
         public function calculaSalario(){
 
             if($this->cargo === 'auxiliar'){
-                $salario = 2000;
-                return $this->salario = $salario;
+                $this->salario = 2000;
             }elseif($this->cargo === 'gerente'){
-                $salario = 5000;
-                return $this->salario = $salario;
+                $this->salario = 5000;
             }
 
         }
@@ -33,22 +33,25 @@
 
     class Gerente extends Funcionario{
 
-        public $cargo;
         public $quantidadeDeColaboradores;
-        public $salario;
+
+
+        public function __construct($id, $nome, $quantidadeDeColaboradores){
+            parent::__construct($id, $nome, 'gerente');
+            $this->quantidadeDeColaboradores = $quantidadeDeColaboradores;
+            $this->calculaSalario();
+        }
 
         public function calculaSalario(){
 
-            if($this->cargo === 'gerente'){
-                $salario = 5000;
-                return $salario;
-            }
+            $this->salario = 5000 + ($this->quantidadeDeColaboradores * 50);
 
         }
 
-
     }
 
-    $funcionario = new Funcionario(222, 'Funcionario', 'gerente');
-    $funcionario->calculaSalario();
+    $funcionario = new Funcionario(222, 'joao', 'auxiliar');
     echo "O salario do funcionário ". $funcionario->nome ." é de R$". $funcionario->salario . PHP_EOL;
+
+    $gerente = new Gerente(123, 'felipe', 100);
+    echo "O salario do gerente ". $gerente->nome ." é de R$". $gerente->salario . PHP_EOL;
