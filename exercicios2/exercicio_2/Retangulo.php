@@ -4,8 +4,6 @@
 
     class Retangulo extends Objeto{
 
-        public $resultado;
-
         public function Verificacao($largura, $altura){
 
             if($largura == $altura){

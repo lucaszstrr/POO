@@ -7,7 +7,6 @@
 
         public $largura;
         public $altura;
-        public $resultado;
 
         public function __construct($largura, $altura){
             $this->largura = $largura;
@@ -15,11 +14,7 @@
         }
 
         public function Area($largura, $altura){
-
-            $resultado = $largura * $altura;
-            return $resultado;
-            echo $resultado .PHP_EOL;
-
+            return 0;
         }
 
     }

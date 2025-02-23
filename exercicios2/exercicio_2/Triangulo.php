@@ -5,14 +5,15 @@
     class Triangulo extends Objeto{
 
         public $tipo;
-        public $resultado;
 
-        public function Area($largura, $altura){
+        public function __construct($largura, $altura, $tipo){
+            parent::__construct($largura, $altura);
+            $this->tipo = $tipo;
+        }
 
-            $resultado = ($largura * $altura) / 2;
-            return $resultado;
-            echo $resultado .PHP_EOL;
 
+        public function Area(){
+            return ($this->largura * $this->altura) / 2;
         }
 
     }
