@@ -15,17 +15,4 @@
             $this->telefone = $telefone;
         }
 
-        public function getNome(){
-            $this->nome;
-        }
-        public function getEndereco(){
-            $this->endereco;
-        }
-        public function getEmail(){
-            $this->email;
-        }
-        public function getTelefone(){
-            $this->telefone;
-        }
-
     }
