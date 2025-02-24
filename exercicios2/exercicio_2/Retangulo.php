@@ -4,24 +4,20 @@
 
     class Retangulo extends Objeto{
 
-        public function Verificacao($largura, $altura){
+        public function Verificacao(){
 
-            if($largura == $altura){
+            if($this->largura == $this->altura){
                 echo "Quadrado" . PHP_EOL;
-                return true;
             }else{
                 echo "Não é um quadrado" . PHP_EOL;
-                return false;
             }
 
         }
 
         public function Area($largura, $altura){
 
-            $resultado = $largura * $altura;
-            return $resultado;
-            echo $resultado .PHP_EOL;
-            
+            echo "A área do quadrilátero é de: " . $this->largura * $this->altura . PHP_EOL;
+
         }
 
     }
